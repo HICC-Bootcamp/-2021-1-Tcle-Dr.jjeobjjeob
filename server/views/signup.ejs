@@ -11,19 +11,7 @@
     </style>
 </head>
 <body>
-    <script type="text/javascript">
-        function checkPwd() {
-            var password = document.getElementById("password").value;
-            var password_confirm = document.getElementById("password_confirm").value;
-            var alert_danger = document.getElementById("alert_danger");
-
-            if (password != password_confirm) {
-                alert("입력한 두 개의 비밀번호가 서로 일치하지 않습니다.");
-                location.reload(true);
-            }
-        }
-    </script>
-    <form class="input_data" action="signup" method="post">
+    <form class="input_data" onsubmit="return checkPwd();" action="signup" method="post">
         <div class="title">Create Account</div>
         <div class="auth_input">
             <label for="username">ID</label>
@@ -41,7 +29,8 @@
             <label for="email">e-mail</label>
             <input type="email" id="email" name="email" placeholder="todaily@todaily.com" pattern=".+@.+*\.[A-Za-z]{2,3}" minlength="5" maxlength="50" required>
         </div>
-        <input type="submit" onclick="checkPwd();" value="Sign Up">
+        <input type="submit" value="Sign Up">
     </form>
+    <script type="text/javascript" src="/javascripts/auth.js"></script>
 </body>
 </html>
