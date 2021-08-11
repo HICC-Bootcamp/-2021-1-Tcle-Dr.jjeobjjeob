@@ -1,5 +1,5 @@
 import { resolveInclude } from 'ejs';
-import {db} from '../db/database.js';
+import {db} from './database.js';
 
 export async function findByUsername(username) {
     return db.execute('SELECT * FROM users WHERE username=?', [username])
@@ -12,9 +12,9 @@ export async function findByEmail(email) {
 }
 
 export async function createUser(user) {
-    const {username, password, email} = user;
+    const {username, password, salt, email} = user;
     return db.execute(
-        'INSERT INTO users (username, password, email) VALUES (?,?,?)',
-        [username, password, email]
+        'INSERT INTO users (username, password, email, salt) VALUES (?,?,?,?)',
+        [username, password, salt, email]
     );
 }

@@ -11,25 +11,37 @@
     </style>
 </head>
 <body>
+    <script type="text/javascript">
+        function checkPwd() {
+            var password = document.getElementById("password").value;
+            var password_confirm = document.getElementById("password_confirm").value;
+            var alert_danger = document.getElementById("alert_danger");
+
+            if (password != password_confirm) {
+                alert("입력한 두 개의 비밀번호가 서로 일치하지 않습니다.");
+                location.reload(true);
+            }
+        }
+    </script>
     <form class="input_data" action="signup" method="post">
         <div class="title">Create Account</div>
         <div class="auth_input">
             <label for="username">ID</label>
-            <input type="text" id="username" name="username" placeholder="username" minlength="5" maxlength="20" required>
+            <input type="text" id="username" name="username" placeholder="특수문자 불가 5~20자" minlength="5" maxlength="20" required>
         </div>
         <div class="auth_input">
-            <label for="username">pw</label>
-            <input type="password" id="password" name="password" placeholder="********" pattern="^(?=.*[A-Za-z])(?=.*[0-9]).{5,20}$" required>
+            <label for="password">pw</label>
+            <input type="password" class="password" id="password" name="password" placeholder="영문, 숫자 포함 5~20자" pattern="^(?=.*[A-Za-z])(?=.*[0-9]).{5,20}$" required>
         </div>
         <div class="auth_input">
-            <label for="username">pw confirm</label>
-            <input type="password" id="password_confirm" name="password_confirm" placeholder="********" required>
+            <label for="password_confirm">pw confirm</label>
+            <input type="password" class="password" id="password_confirm" name="password_confirm" placeholder="영문, 숫자 포함 5~20자" required>
         </div>
         <div class="auth_input">
-            <label for="username">e-mail</label>
+            <label for="email">e-mail</label>
             <input type="email" id="email" name="email" placeholder="todaily@todaily.com" pattern=".+@.+*\.[A-Za-z]{2,3}" minlength="5" maxlength="50" required>
         </div>
-        <input type="submit" onclick="signup_validate()" value="Sign Up">
+        <input type="submit" onclick="checkPwd();" value="Sign Up">
     </form>
 </body>
 </html>
