@@ -18,19 +18,11 @@ export async function signup(req, res){
     if (foundEmail) {
         return res.status(409).json({message: `${email} already exists`});
     }
-    await bcrypt.genSalt(saltRounds, function(err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(password, salt, function(err, hash) {
-            if (err) return next(err);
-            // console.log(salt);
-            // console.log(hash);
-            userRepository.createUser({
-                username,
-                password: hash,
-                salt,
-                email
-            });  
-        });
-      });
+    const hashed = await bcrypt.hash(password, saltRounds);
+    userRepository.createUser({
+        username,
+        password: hashed,
+        email
+    });  
     res.redirect('/');
 }

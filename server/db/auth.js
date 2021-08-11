@@ -14,7 +14,7 @@ export async function findByEmail(email) {
 export async function createUser(user) {
     const {username, password, salt, email} = user;
     return db.execute(
-        'INSERT INTO users (username, password, email, salt) VALUES (?,?,?,?)',
-        [username, password, salt, email]
+        'INSERT INTO users (username, password, email) VALUES (?,?,?)',
+        [username, password, email]
     );
 }
