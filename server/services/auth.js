@@ -24,5 +24,12 @@ export async function signup(req, res){
         password: hashed,
         email
     });  
+    res.redirect('/auth/login');
+}
+
+export async function login(req, res){
+    const {username, password} = req.body;
+    const foundUsername = await userRepository.findByUsername(username);
+
     res.redirect('/');
 }
