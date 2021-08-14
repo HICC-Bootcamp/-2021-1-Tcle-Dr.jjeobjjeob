@@ -17,6 +17,7 @@
     "http": "0.0.1-security",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "jwt-check-expiration": "^1.0.5",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.0",
     "path": "^0.12.7"

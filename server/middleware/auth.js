@@ -1,18 +1,18 @@
 import jwt from 'jsonwebtoken';
 import * as userRepository from '../db/auth.js';
 import {config} from '../config.js';
+import { isJwtExpired } from 'jwt-check-expiration';
 
 const authError = { message: 'Authentication Error' };
 
 export const isAuth = async (req, res, next) => {
-  const authHeader = req.get('Authorization');
-  if (!(authHeader && authHeader.startsWith('Bearer '))) {  // 검증할 수 없는 상태
+  const accessToken = req.cookies.accessToken;
+  if (!accessToken || isJwtExpired(accessToken)) {  // 검증할 수 없는 상태
     return res.status(401).json(authError);
   }
 
-  const token = authHeader.split(' ')[1];
   jwt.verify(
-    token,
+    accessToken,
     config.jwt.secretKey,
     async (error, decoded) => {
       if (error) {
