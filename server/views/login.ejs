@@ -11,15 +11,15 @@
     </style>
 </head>
 <body>
-    <form class="input_data" onsubmit="return checkPwd();" action="signup" method="post">
+    <form class="input_data" action="login" method="post">
         <div class="title"><%= title %></div>
         <div class="auth_input">
             <label for="username">ID</label>
-            <input type="text" id="username" name="username" placeholder="특수문자 불가 5~20자" minlength="5" maxlength="20" required>
+            <input type="text" id="username" name="username" placeholder="username" required>
         </div>
         <div class="auth_input">
             <label for="password">pw</label>
-            <input type="password" class="password" id="password" name="password" placeholder="영문, 숫자 포함 5~20자" pattern="^(?=.*[A-Za-z])(?=.*[0-9]).{5,20}$" required>
+            <input type="password" class="password" id="password" name="password" placeholder="********" required>
         </div>
         <input type="submit" value="Login">
     </form>

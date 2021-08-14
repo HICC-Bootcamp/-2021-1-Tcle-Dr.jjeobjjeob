@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import crypto from 'crypto';
-import { nextTick } from 'process';
-import * as userRepository from '../db/auth.js'
+import jwt from 'jsonwebtoken';
+import * as userRepository from '../db/auth.js';
+import {config} from '../config.js';
 
 const saltRounds = 12;
 
@@ -29,7 +29,18 @@ export async function signup(req, res){
 
 export async function login(req, res){
     const {username, password} = req.body;
-    const foundUsername = await userRepository.findByUsername(username);
+    const user = await userRepository.findByUsername(username);
+    if (user == undefined) {
+        return res.status(401).json({message: `Invalid user or password`});
+    }
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+        return res.status(401).json({message: `Invalid user or password`});
+    }
+    const token = createJwtToken(user.id);
+    res.status(200).json({token, username});
+}
 
-    res.redirect('/');
+function createJwtToken(id) {
+    return jwt.sign({ id }, config.jwt.secretKey, {expiresIn: 2394820});
 }

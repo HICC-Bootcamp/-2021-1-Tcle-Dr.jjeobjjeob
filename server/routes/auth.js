@@ -1,5 +1,6 @@
 import express from 'express';
 import * as authService from '../services/auth.js';
+import { isAuth } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -14,6 +15,5 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', authService.login);
-
 
 export default router;
