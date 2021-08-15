@@ -23,3 +23,7 @@ export async function createUser(user) {
         [username, password, email]
     );
 }
+
+export async function storeToken(id, refreshToken) {
+    return db.execute('UPDATE users SET token=? WHERE id=?', [refreshToken, id]);
+}

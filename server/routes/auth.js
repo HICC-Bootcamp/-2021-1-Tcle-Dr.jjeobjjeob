@@ -16,4 +16,10 @@ router.get('/login', function(req, res, next) {
 
 router.post('/login', authService.login);
 
+router.get('/login_error', function(req, res, next) {
+  res.render('login_error', { title: 'Todaily' });
+});
+
+router.post('/login_error', authService.login);
+
 export default router;

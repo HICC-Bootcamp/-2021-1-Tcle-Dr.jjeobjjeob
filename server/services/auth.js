@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as userRepository from '../db/auth.js';
 import {config} from '../config.js';
+
 const saltRounds = 12;
 
 export async function signup(req, res){
@@ -36,15 +37,22 @@ export async function login(req, res){
     if (!isValidPassword) {
         return res.status(401).json({message: `Invalid user or password`});
     }
-
-    const accessToken = createJwtToken(user.id);
+    
+    const accessToken = await createJwtToken(user.id, config.jwt.accessExpriresIn);
     res.cookie('accessToken', accessToken, {
         httpOnly: true,
-        expires: 0  // 브라우저 닫으면 사라짐
+        secure: true
     });
+    const refreshToken = await createJwtToken(user.id, config.jwt.refreshExpriresIn);
+    res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        secure: true
+    });
+    userRepository.storeToken(user.id, refreshToken);
+    
     res.redirect('/');
 }
 
-function createJwtToken(id) {
-    return jwt.sign({ id }, config.jwt.secretKey, {expiresIn: '1s'});   // 테스트용
+function createJwtToken(id, exp) {
+    return jwt.sign({ id }, config.jwt.secretKey, {expiresIn: exp});
 }
