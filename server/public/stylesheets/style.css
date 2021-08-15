@@ -77,3 +77,14 @@ body {
 
   color: #000000;
 }
+
+p {
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+
+  color: #df0000;
+}

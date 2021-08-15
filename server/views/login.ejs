@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Todaily</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
     </style>
 </head>
 <body>
-    <form class="input_data" action="login" method="post">
-        <div class="title"><%= title %></div>
+    <form class="input_data" action="http://localhost:3000/auth/login" method="post">
+        <div class="title">Todaily</div>
         <div class="auth_input">
             <label for="username">ID</label>
             <input type="text" id="username" name="username" placeholder="username" required>
@@ -22,6 +22,7 @@
             <input type="password" class="password" id="password" name="password" placeholder="********" required>
         </div>
         <input type="submit" value="Login">
+        <p><%= errorMsg %></p>
     </form>
     <script type="text/javascript" src="/javascripts/auth.js"></script>
 </body>

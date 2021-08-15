@@ -24,6 +24,6 @@ export async function createUser(user) {
     );
 }
 
-export async function storeToken(id, refreshToken) {
-    return db.execute('UPDATE users SET token=? WHERE id=?', [refreshToken, id]);
+export async function storeToken(username, refreshToken) {
+    return db.execute('UPDATE users SET token=? WHERE username=?', [refreshToken, username]);
 }
