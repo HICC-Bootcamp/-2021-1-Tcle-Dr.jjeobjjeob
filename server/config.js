@@ -10,6 +10,11 @@ function required(key, defaultValue=undefined) {
 };
 
 export const config = {
+    jwt: {
+        secretKey: required('JWT_SECRET'),
+        refreshExpriresIn: required('JWT_REFRESH_EXPIRES_IN', '1 day'),
+        accessExpriresIn: required('JWT_ACCESS_EXPIRES_IN', '5 h'),
+    },
     db: {
         host: required('DB_HOST'),
         user: required('DB_USER'),
