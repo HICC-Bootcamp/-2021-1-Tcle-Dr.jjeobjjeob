@@ -125,7 +125,7 @@ p {
 
 .board .text {
   width: 99%;
-  height: 655px;
+  height: 635px;
   resize: none;
   margin: 0px auto;
 
@@ -148,10 +148,9 @@ p {
   align-items: center;
   justify-content: center;
   row-gap: 13px;
-  grid-template-rows: repeat(1, auto);
 
-  width: 60px;
-  height: 130px;
+  width: 55px;
+  height: 80px;
 
   background: rgba(231, 231, 231, 0.8);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -165,8 +164,28 @@ p {
   background: transparent;
 }
 
-.controlMenu input {
-  background: url(/images/savePost.svg);
+.controlMenu input[type="submit"] {
+  background: url(/images/icons/savePost.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu input[type="file"] {
+  background: url(/images/icons/addImage.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu button[type="button"] {
+  background: url(/images/icons/exit.svg);
   background-repeat: no-repeat;
 
   width: 27px;

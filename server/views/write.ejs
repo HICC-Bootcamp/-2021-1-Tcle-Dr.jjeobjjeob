@@ -11,19 +11,23 @@
     </style>
 </head>
   <body>
-    <form class="container" action="posts" method="post">
+    <form class="container" action="posts" method="post" enctype="multipart/form-data">
       <div class="board">
         <center>
           <input type="text" class="title" name="title" placeholder="Title" required>
           <hr>
           <textarea class="text" name="text" placeholder="내용을 입력하세요." required></textarea>
+          <div style="float: right;">
+            <label for="image" />
+            <input type="file" name="image" alt="image">
+          </div>
         </center>
       </div>
       <div class="controlMenu">
-        <button type="button" name="addImage" alt="image"><img src="/images/addImage.svg" /></button>
-        <input type="submit" name="savePost" alt="save">
-        <button type="button" name="exit" alt="exit" onclick=""><img src="/images/exit.svg" /></button>
+        <input type="submit" name="save" alt="save">
+        <button type="button" name="exit" alt="exit" onclick=""></button>
       </div>
     </form>
+    <script type="text/javascript" src="/javascripts/posts.js"></script>
   </body>
 </html>
