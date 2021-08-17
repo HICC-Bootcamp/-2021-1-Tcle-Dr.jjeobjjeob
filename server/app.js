@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
+import postsRouter from './routes/posts.js';
 import { config } from './config.js';
 import { db } from './db/database.js';
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/posts', postsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -42,6 +42,7 @@ export const isAuth = async (req, res, next) => {
         return res.render('login', { errorMsg : authError });
       }
 
+      req.username = user.username;
       next();
     }
   );
