@@ -11,6 +11,11 @@ export async function countByUsername(username) {
     .then(result => result[0][0].count);
 }
 
+export async function findByPostId(id) {
+    return db.execute('SELECT * FROM posts WHERE id=?', [id])
+    .then(result => result[0][0]);
+}
+
 export async function createPost(post) {
     const {title, text, image, createdAt, username} = post;
     return db.execute(

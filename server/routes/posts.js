@@ -28,11 +28,13 @@ const upload = multer({storage: storage, fileFilter:imageFilter});
 
 
 router.get('/write', isAuth, function(req, res, next) {
-  res.render('write');
+  res.render('postWrite');
 });
 
-router.post('/write', isAuth, upload.single('image'), postService.write);
+router.post('/', isAuth, upload.single('image'), postService.write);
 
-router.get('/', isAuth, postService.read);
+router.get('/', isAuth, postService.getList);
+
+router.get('/:id', isAuth, postService.getPost);
 
 export default router;

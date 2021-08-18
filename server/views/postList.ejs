@@ -15,7 +15,12 @@
       <div class="board read">
         <% var i = 0; %>
         <% while(posts[i] != null) {%>
-          <a class="post" href="/posts?id=<%= posts[i].id %>"></a>
+          <a class="post" href="/posts/<%= posts[i].id %>">
+            <% image = posts[i].image; %>
+            <% if (image) { %>
+              <img name="image" alt="image" src="/images/posts/<%= image %>">
+            <% } %>
+          </a>
           <% i++; %>
         <% } %>
       </div>

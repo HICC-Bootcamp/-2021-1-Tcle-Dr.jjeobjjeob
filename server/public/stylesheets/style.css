@@ -103,6 +103,9 @@ p {
 
   width: 1000px;
   height: 750px;
+  overflow-y: scroll;
+
+  text-align: center;
 
   background: #ffffff;
   border: 1px solid #ffffff;
@@ -110,9 +113,10 @@ p {
 }
 
 .board .title {
-  margin: 2px;
+  margin: 2px 5px;
   border: 0px;
   width: 99%;
+  text-align: left;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -153,6 +157,12 @@ p {
   height: 220px;
 
   background-color: #bdbdbd;
+}
+
+.post img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
 }
 
 .controlMenu {
