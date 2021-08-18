@@ -18,5 +18,15 @@ export async function write(req, res){
         createdAt,
         username
     });
-    res.redirect('/');
+    res.redirect('/posts');
+}
+
+export async function read(req, res, next){
+    const username = req.username;
+    const posts = await postRepository.findByUsername(username);
+    const count = await postRepository.countByUsername(username);
+    if (count == 0){
+        res.render('posts', { posts : '', count : count });
+    };
+    res.render('posts', { posts : posts, count : count });
 }

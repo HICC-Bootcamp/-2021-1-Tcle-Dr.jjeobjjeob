@@ -138,6 +138,23 @@ p {
   border: none;
 }
 
+.read {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: start;
+  justify-items: center;
+}
+
+.read .post {
+  margin: 10px;
+
+  resize: none;
+  width: 220px;
+  height: 220px;
+
+  background-color: #bdbdbd;
+}
+
 .controlMenu {
   grid-row: 2;
   grid-column: 3;

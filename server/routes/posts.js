@@ -6,10 +6,6 @@ import { isAuth } from '../services/tokenValidate.js';
 
 const router = express.Router();
 
-router.get('/', isAuth, function(req, res, next) {
-  res.render('write');
-});
-
 const imageFilter = (req, file, cb) => {
   if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
     return cb(new Error("jpg, jpeg, png, gif 확장자 파일만 업로드할 수 있습니다."));
@@ -30,6 +26,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage, fileFilter:imageFilter});
 
-router.post('/', isAuth, upload.single('image'), postService.write);
+
+router.get('/write', isAuth, function(req, res, next) {
+  res.render('write');
+});
+
+router.post('/write', isAuth, upload.single('image'), postService.write);
+
+router.get('/', isAuth, postService.read);
 
 export default router;
