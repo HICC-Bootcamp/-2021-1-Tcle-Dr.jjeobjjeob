@@ -2,18 +2,18 @@ import { resolveInclude } from 'ejs';
 import {db} from './database.js';
 
 export async function findByUsername(username) {
-    return db.execute('SELECT * FROM posts WHERE username=?', [username])
-    .then(result => result[0]);
+    const [posts, fields] = await db.execute('SELECT * FROM posts WHERE username=?', [username]);
+    return posts;
 }
 
 export async function countByUsername(username) {
-    return db.execute('SELECT COUNT(*) as count FROM posts WHERE username=?', [username])
-    .then(result => result[0][0].count);
+    const [count, fields] = await db.execute('SELECT COUNT(*) as count FROM posts WHERE username=?', [username]);
+    return count[0].count;
 }
 
 export async function findByPostId(id) {
-    return db.execute('SELECT * FROM posts WHERE id=?', [id])
-    .then(result => result[0][0]);
+    const [posts, fields] = await db.execute('SELECT * FROM posts WHERE id=?', [id])
+    return posts[0];
 }
 
 export async function createPost(post) {

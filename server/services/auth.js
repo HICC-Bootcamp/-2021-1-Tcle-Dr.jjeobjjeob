@@ -31,11 +31,11 @@ export async function login(req, res){
     const {username, password} = req.body;
     const user = await userRepository.findByUsername(username);
     if (user == undefined) {
-        return res.render('login', { errorMsg : invalidError });
+        return res.render('login', { errorMsg : "아이디 혹은 비밀번호가 틀렸습니다." });
     }
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
-        return res.render('login', { errorMsg : invalidError });
+        return res.render('login', { errorMsg : "아이디 혹은 비밀번호가 틀렸습니다." });
     }
     
     const accessToken = await createJwtToken(user.username, config.jwt.accessExpriresIn);

@@ -25,11 +25,7 @@ export async function getList(req, res, next){
     const username = req.username;
     const posts = await postRepository.findByUsername(username);
     const count = await postRepository.countByUsername(username);
-    console.log(posts[1].createdAt);
 
-    if (count == 0){
-        res.render('postList', { posts : '', count : count });
-    };
     res.render('postList', { posts : posts, count : count });
 }
 
