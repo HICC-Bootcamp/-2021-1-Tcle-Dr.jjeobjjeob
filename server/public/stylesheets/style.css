@@ -103,16 +103,27 @@ p {
 
   width: 1000px;
   height: 750px;
+  overflow-y: scroll;
+
+  display: grid;
+  justify-items: center;
 
   background: #ffffff;
   border: 1px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.calendarMenu {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  height: 40px;
+}
+
 .board .title {
-  margin: 2px;
+  margin: 2px 5px;
   border: 0px;
   width: 99%;
+  text-align: left;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -136,6 +147,49 @@ p {
 
   outline: none;
   border: none;
+}
+
+.read {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: start;
+  justify-items: center;
+}
+
+.read .post:hover {
+  filter: brightness(70%);
+}
+
+.read .post {
+  margin: 10px;
+
+  resize: none;
+  width: 220px;
+  height: 220px;
+
+  position: relative;
+  background-color: #bdbdbd;
+}
+
+.post img:hover {
+  filter: brightness(70%);
+}
+
+.post img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.post .date {
+  position: absolute;
+  margin: 0px;
+  bottom: 5px;
+  right: 5px;
+
+  font-size: 25px;
+
+  color: #ffffff;
 }
 
 .controlMenu {
@@ -164,7 +218,7 @@ p {
   background: transparent;
 }
 
-.controlMenu input[type="submit"] {
+.controlMenu input[name="save"] {
   background: url(/images/icons/savePost.svg);
   background-repeat: no-repeat;
 
@@ -184,8 +238,28 @@ p {
   border: none;
 }
 
-.controlMenu button[type="button"] {
+.controlMenu button[name="exit"] {
   background: url(/images/icons/exit.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu a[name="write"] {
+  background: url(/images/icons/write.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu button[name="calendar"] {
+  background: url(/images/icons/calendar.svg);
   background-repeat: no-repeat;
 
   width: 27px;
@@ -196,5 +270,6 @@ p {
 
 hr {
   width: 99%;
+  height: 0px;
   margin: 5px;
 }

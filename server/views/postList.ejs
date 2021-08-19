@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todaily</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+    </style>
+</head>
+  <body>
+    <div class="container">
+      <div class="board read">
+        <div class="calendarMenu">
+        </div>
+        <% var i = 0; %>
+        <% while(posts[i] != null) {%>
+          <a class="post" href="/posts/<%= posts[i].id %>">
+            <% const image = posts[i].image; %>
+            <% if (image) { %>
+              <img name="image" alt="image" src="/images/posts/<%= image %>">
+            <% } %>
+            <% const createdAt = posts[i].createdAt %>
+            <% const date = createdAt.getUTCFullYear() + '-' + createdAt.getUTCMonth() + '-' + createdAt.getUTCDate()%>
+            <p class="date" name="date"><%= date %></p>
+          </a>
+          <% i++; %>
+        <% } %>
+      </div>
+      <div class="controlMenu">
+        <a type="button" name="write" alt="write" href="http://localhost:3000/posts/write"></a>
+        <button type="button" name="calendar" alt="calendar" />
+      </div>
+    </div>
+    <script type="text/javascript" src="/javascripts/posts.js"></script>
+  </body>
+</html>
