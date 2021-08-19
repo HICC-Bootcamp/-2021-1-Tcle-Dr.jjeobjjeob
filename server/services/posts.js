@@ -29,7 +29,7 @@ export async function getList(req, res, next){
     res.render('postList', { posts : posts, count : count });
 }
 
-export async function getPost(req, res, next){
+export async function getPost(req, res){
     const id = req.params.id;
     const post = await postRepository.findByPostId(id);
 
@@ -37,5 +37,35 @@ export async function getPost(req, res, next){
     const text = post.text;
     const image = post.image;
 
-    res.render('postRead', { title : title, text : text, image : image });
+    res.render('postRead', { id : id, title : title, text : text, image : image });
+}
+
+export async function modify(req, res){
+    const id = req.params.id;
+    const post = await postRepository.findByPostId(id);
+
+    const title = post.title;
+    const text = post.text;
+    const image = post.image;
+
+    res.render('postModify', { id : id, title : title, text : text, image : image });
+}
+
+export async function update(req, res){
+    const id = req.params.id;
+    console.log(req.body);
+    const {title, text} = req.body;
+    
+    var image = null;
+    if (req.file){
+        image = req.file.filename;  
+    }
+
+    postRepository.updatePost({
+        id,
+        title,
+        text,
+        image
+    });
+    res.redirect('/posts');
 }

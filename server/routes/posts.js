@@ -1,3 +1,4 @@
+import { render } from 'ejs';
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
@@ -30,6 +31,10 @@ const upload = multer({storage: storage, fileFilter:imageFilter});
 router.get('/write', isAuth, function(req, res, next) {
   res.render('postWrite');
 });
+
+router.get('/modify/:id', isAuth, postService.modify);
+
+router.put('/modify/:id', upload.single('image'), postService.update);
 
 router.post('/', isAuth, upload.single('image'), postService.write);
 

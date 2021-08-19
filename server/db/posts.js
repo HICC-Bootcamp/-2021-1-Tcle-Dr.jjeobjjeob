@@ -23,3 +23,17 @@ export async function createPost(post) {
         [title, text, image, createdAt, username]
     );
 }
+
+export async function updatePost(post) {
+    const {id, title, text, image} = post;
+    if (image != null) {
+        db.execute(
+            'UPDATE posts SET image=? WHERE id=?',
+            [image, id]
+        );
+    }
+    return db.execute(
+        'UPDATE posts SET title=?, text=? WHERE id=?',
+        [title, text, id]
+    );
+}
