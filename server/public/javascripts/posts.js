@@ -18,7 +18,6 @@ $("#update").click(function(event) {
   formData.append('text', $(".text").val());
   
   if($(".image")[0].files[0]) {
-    // alert($(".image")[0].files[0].name);
     formData.append('image', $(".image")[0].files[0]);
   }
   else {
@@ -27,7 +26,7 @@ $("#update").click(function(event) {
 
   const redirect = $(location).attr('origin') + '/posts/' + id;  // 게시글 페이지
   $.ajax({
-    url: "http://localhost:3000/posts/modify/" + id,
+    url: "http://localhost:3000/posts/" + id,
     type: "PUT",
     processData: false,
     contentType: false,
