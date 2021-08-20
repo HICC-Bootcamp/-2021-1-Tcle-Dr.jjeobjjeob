@@ -9,8 +9,7 @@ $('input[type=file]').on('change',function(){
 });
 
 $("#update").click(function(event) {  
-  const pathname = $(location).attr('pathname').split('/');
-  const id = pathname[pathname.length-1];
+  const id = $("input[type='hidden']").val();
   
   var formData = new FormData();
   formData.append('id', id);
@@ -33,8 +32,7 @@ $("#update").click(function(event) {
     enctype: 'multipart/form-data',
     data: formData,
     error: function(error) {
-      console.error(error);
-      $(location).attr('href', redirect);
+      alert('전송이 실패했습니다.');
     }
   });
 });
