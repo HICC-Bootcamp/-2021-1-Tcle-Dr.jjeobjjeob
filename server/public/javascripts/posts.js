@@ -31,6 +31,9 @@ $("#update").click(function(event) {
     contentType: false,
     enctype: 'multipart/form-data',
     data: formData,
+    success: function(data) {
+      $(location).attr('href', redirect);
+    },
     error: function(error) {
       alert('전송이 실패했습니다.');
     }

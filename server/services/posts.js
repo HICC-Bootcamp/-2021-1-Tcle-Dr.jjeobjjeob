@@ -28,6 +28,7 @@ export async function update(req, res){
     const id = req.params.id;
     const isValid = await validateUser(id, req.username);
     if (!isValid) {
+        console.log("valid");
         return res.status(401).json({message : "권한이 없습니다."});
     }
 
@@ -46,7 +47,7 @@ export async function update(req, res){
         text,
         image
     });
-    res.redirect('/posts');
+    res.end();
 }
 
 async function validateUser(postId, reqUsername) {
