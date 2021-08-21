@@ -50,8 +50,24 @@ export async function update(req, res){
     res.end();
 }
 
+export async function remove(req, res){
+    const id = req.params.id;
+    const isValid = await validateUser(id, req.username);
+    if (!isValid) {
+        return res.status(401).json({message : "권한이 없습니다."});
+    }
+    
+    const post = await postRepository.findByPostId(id);
+    if(post.image != null) {
+        fs.promises.unlink(`./public/images/posts/${post.image}`).then(console.log).catch(console.error);
+    }
+    postRepository.deletePost(id);
+    res.end();
+}
+
 async function validateUser(postId, reqUsername) {
-    const username = await postRepository.findByPostId(postId).username;
+    const post = await postRepository.findByPostId(postId);
+    const username = post.username; 
     if (reqUsername == username) {
         return true;
     }

@@ -37,3 +37,7 @@ export async function updatePost(post) {
         [title, text, id]
     );
 }
+
+export async function deletePost(id) {
+    return db.execute('DELETE FROM posts WHERE id=?', [id]);
+}

@@ -39,3 +39,20 @@ $("#update").click(function(event) {
     }
   });
 });
+
+
+$("#delete").click(function(event) {  
+  const id = $("input[type='hidden']").val();
+
+  const redirect = $(location).attr('origin') + '/posts';  // 게시글 목록 페이지
+  $.ajax({
+    url: "http://localhost:3000/posts/" + id,
+    type: "DELETE",
+    success: function(data) {
+      $(location).attr('href', redirect);
+    },
+    error: function(error) {
+      alert('전송이 실패했습니다.');
+    }
+  });
+});

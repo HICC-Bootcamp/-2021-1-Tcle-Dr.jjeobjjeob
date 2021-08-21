@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todaily</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
     </style>
@@ -20,10 +21,12 @@
           <% } %>
           <div class="text" name="text"><%= text %></div>
       </div>
-      <div class="controlMenu">
+      <div class="controlMenu" style="height: 110px;">
         <a name="write" alt="write" href="http://localhost:3000/posts/<%=id%>?status=update"></a>
+        <button type="button" id="delete" name="delete" alt="delete"></button>
         <a name="exit" alt="exit" href="http://localhost:3000/posts"></a>
       </div>
+      <input type="hidden" value="<%= id %>">
     </div>
     <script type="text/javascript" src="/javascripts/posts.js"></script>
   </body>

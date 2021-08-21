@@ -269,6 +269,16 @@ p {
   border: none;
 }
 
+.controlMenu button[name="delete"] {
+  background: url(/images/icons/delete.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
 hr {
   width: 99%;
   height: 0px;
