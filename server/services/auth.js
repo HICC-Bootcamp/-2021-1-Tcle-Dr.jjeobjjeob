@@ -50,7 +50,7 @@ export async function login(req, res){
     });
     userRepository.storeToken(user.username, refreshToken);
     
-    res.redirect('/');
+    res.redirect('/posts');
 }
 
 function createJwtToken(username, exp) {

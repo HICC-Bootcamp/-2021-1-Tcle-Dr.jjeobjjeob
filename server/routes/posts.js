@@ -1,3 +1,4 @@
+import { render } from 'ejs';
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
@@ -26,15 +27,18 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage, fileFilter:imageFilter});
 
-
-router.get('/write', isAuth, function(req, res, next) {
-  res.render('postWrite');
-});
-
-router.post('/', isAuth, upload.single('image'), postService.write);
-
-router.get('/', isAuth, postService.getList);
+router.get('/', isAuth, function(req, res, next) {
+  const status = req.query.status;
+  if (status == 'create') {
+    return res.render('postCreate');
+  }  
+  next();
+}, postService.getList);
 
 router.get('/:id', isAuth, postService.getPost);
+
+router.post('/', isAuth, upload.single('image'), postService.create);
+
+router.put('/:id', upload.single('image'), postService.update);
 
 export default router;

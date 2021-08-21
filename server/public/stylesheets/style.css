@@ -218,7 +218,8 @@ p {
   background: transparent;
 }
 
-.controlMenu input[name="save"] {
+.controlMenu input[name="save"],
+.controlMenu button[name="save"] {
   background: url(/images/icons/savePost.svg);
   background-repeat: no-repeat;
 
@@ -238,7 +239,7 @@ p {
   border: none;
 }
 
-.controlMenu button[name="exit"] {
+.controlMenu a[name="exit"] {
   background: url(/images/icons/exit.svg);
   background-repeat: no-repeat;
 
