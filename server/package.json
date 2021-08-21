@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node app",
     "test": "nodemon app"
   },
   "dependencies": {
