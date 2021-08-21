@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todaily</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+    </style>
+</head>
+<body>
+    <form class="input_data" onsubmit="return checkPwd();" action="signup" method="post">
+        <div class="title">Create Account</div>
+        <div class="auth_input">
+            <label for="username">ID</label>
+            <input type="text" id="username" name="username" placeholder="특수문자 불가 5~20자" minlength="5" maxlength="20" required>
+        </div>
+        <div class="auth_input">
+            <label for="password">pw</label>
+            <input type="password" class="password" id="password" name="password" placeholder="영문, 숫자 포함 5~20자" pattern="^(?=.*[A-Za-z])(?=.*[0-9]).{5,20}$" required>
+        </div>
+        <div class="auth_input">
+            <label for="password_confirm">pw confirm</label>
+            <input type="password" class="password" id="password_confirm" name="password_confirm" placeholder="영문, 숫자 포함 5~20자" required>
+        </div>
+        <div class="auth_input">
+            <label for="email">e-mail</label>
+            <input type="email" id="email" name="email" placeholder="todaily@todaily.com" pattern=".+@.+*\.[A-Za-z]{2,3}" minlength="5" maxlength="50" required>
+        </div>
+        <p><%= errorMsg %></p>
+        <input type="submit" value="Sign Up">
+        
+    </form>
+    <script type="text/javascript" src="/javascripts/auth.js"></script>
+</body>
+</html>

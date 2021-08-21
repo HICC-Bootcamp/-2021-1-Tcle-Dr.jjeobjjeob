@@ -1,8 +1,286 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #82899c;
 }
 
-a {
-  color: #00B7FF;
+.input_data {
+  display: block;
+  margin: 10% auto;
+  width: 600px;
+  height: 500px;
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input_data .title {
+  margin: 10% auto 5%;
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+
+  color: #000000;
+}
+
+.input_data input[type="submit"] {
+  display: block;
+  margin: 5% auto;
+  width: 60%;
+  height: 10%;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+
+  align-items: center;
+  border: none;
+  background-color: rgba(130, 137, 156, 0.6);
+}
+
+.auth_input {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin: 5px auto;
+  width: 60%;
+  height: 8%;
+  align-items: center;
+
+  background: #e3e3e3;
+}
+
+.auth_input label {
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+
+  color: #000000;
+}
+
+.auth_input input {
+  border: none;
+  background-color: transparent;
+  margin-left: 5px;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+
+  color: #000000;
+}
+
+p {
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+
+  color: #df0000;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1000px 1fr;
+  grid-template-rows: repeat(3, minmax(100px, auto));
+  gap: 5px;
+}
+
+.board {
+  grid-row: 2;
+  grid-column: 2;
+  margin: 0px;
+
+  width: 1000px;
+  height: 750px;
+  overflow-y: scroll;
+
+  display: grid;
+  justify-items: center;
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.calendarMenu {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  height: 40px;
+}
+
+.board .title {
+  margin: 2px 5px;
+  border: 0px;
+  width: 99%;
+  text-align: left;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+
+  outline: none;
+  color: #000000;
+}
+
+.board .text {
+  width: 99%;
+  height: 635px;
+  resize: none;
+  margin: 0px auto;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+
+  outline: none;
+  border: none;
+}
+
+.read {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: start;
+  justify-items: center;
+}
+
+.read .post:hover {
+  filter: brightness(70%);
+}
+
+.read .post {
+  margin: 10px;
+
+  resize: none;
+  width: 220px;
+  height: 220px;
+
+  position: relative;
+  background-color: #bdbdbd;
+}
+
+.post img:hover {
+  filter: brightness(70%);
+}
+
+.post img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.post .date {
+  position: absolute;
+  margin: 0px;
+  bottom: 5px;
+  right: 5px;
+
+  font-size: 25px;
+
+  color: #ffffff;
+}
+
+.controlMenu {
+  grid-row: 2;
+  grid-column: 3;
+  margin: 0px;
+  padding: 15px 0px;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  row-gap: 13px;
+
+  width: 55px;
+  height: 80px;
+
+  background: rgba(231, 231, 231, 0.8);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.controlMenu button {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  height: 27px;
+  background: transparent;
+}
+
+.controlMenu input[name="save"],
+.controlMenu button[name="save"] {
+  background: url(/images/icons/savePost.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu input[type="file"] {
+  background: url(/images/icons/addImage.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu a[name="exit"] {
+  background: url(/images/icons/exit.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu a[name="write"] {
+  background: url(/images/icons/write.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu button[name="calendar"] {
+  background: url(/images/icons/calendar.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+.controlMenu button[name="delete"] {
+  background: url(/images/icons/delete.svg);
+  background-repeat: no-repeat;
+
+  width: 27px;
+  height: 27px;
+  color: transparent;
+  border: none;
+}
+
+hr {
+  width: 99%;
+  height: 0px;
+  margin: 5px;
 }
