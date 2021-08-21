@@ -39,6 +39,8 @@ router.get('/:id', isAuth, postService.getPost);
 
 router.post('/', isAuth, upload.single('image'), postService.create);
 
-router.put('/:id', upload.single('image'), postService.update);
+router.put('/:id', isAuth, upload.single('image'), postService.update);
+
+router.delete('/:id', isAuth, postService.remove);
 
 export default router;
