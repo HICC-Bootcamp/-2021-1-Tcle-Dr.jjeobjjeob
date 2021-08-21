@@ -29,7 +29,7 @@ body {
 
 .input_data input[type="submit"] {
   display: block;
-  margin: 5% auto;
+  margin: 5% auto 10px;
   width: 60%;
   height: 10%;
 
@@ -41,6 +41,18 @@ body {
   align-items: center;
   border: none;
   background-color: rgba(130, 137, 156, 0.6);
+}
+
+.input_data a[name="signup"] {
+  display: block;
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+
+  color: #000000;
 }
 
 .auth_input {
